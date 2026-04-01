@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MotorParts – Toko Sparepart Motor Online</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<body>
+
+  <!-- ===== HEADER ===== -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="#beranda" class="logo">
+        <i class="fa-solid fa-gear fa-spin-pulse"></i>
+        <span>MotorParts</span>
+      </a>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+      <nav class="main-nav" id="mainNav">
+        <ul>
+          <li><a href="#beranda" class="nav-link active">Beranda</a></li>
+          <li><a href="#produk" class="nav-link">Produk</a></li>
+          <li><a href="#keranjang" class="nav-link">
+            Keranjang <span class="cart-badge" id="cartBadge">0</span>
+          </a></li>
+          <li><a href="#profil" class="nav-link">Profil</a></li>
+          <li><a href="#kontak" class="nav-link">Kontak</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ===== MAIN ===== -->
+  <main>
+
+    <!-- SECTION BERANDA -->
+    <section id="beranda" class="section-beranda">
+      <div class="hero-banner">
+        <div class="hero-overlay">
+          <div class="container hero-content">
+            <h1>Sparepart Motor Terlengkap</h1>
+            <p>Kualitas terjamin, harga bersaing, pengiriman cepat ke seluruh Indonesia.</p>
+            <a href="#produk" class="btn btn-primary">Belanja Sekarang</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Kategori -->
+      <div class="container">
+        <h2 class="section-title">Kategori Sparepart</h2>
+        <div class="kategori-grid">
+          <button class="kategori-card" data-filter="mesin">
+            <i class="fa-solid fa-cogs"></i>
+            <span>Mesin</span>
+          </button>
+          <button class="kategori-card" data-filter="rem">
+            <i class="fa-solid fa-circle-dot"></i>
+            <span>Rem & Kopling</span>
+          </button>
+          <button class="kategori-card" data-filter="oli">
+            <i class="fa-solid fa-oil-can"></i>
+            <span>Oli & Cairan</span>
+          </button>
+          <button class="kategori-card" data-filter="kelistrikan">
+            <i class="fa-solid fa-bolt"></i>
+            <span>Kelistrikan</span>
+          </button>
+          <button class="kategori-card" data-filter="ban">
+            <i class="fa-solid fa-circle"></i>
+            <span>Ban & Velg</span>
+          </button>
+          <button class="kategori-card" data-filter="body">
+            <i class="fa-solid fa-shield-halved"></i>
+            <span>Body & Aksesoris</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Promo Banner -->
+      <div class="container promo-section">
+        <div class="promo-card promo-1">
+          <div class="promo-text">
+            <h3>Diskon 20%</h3>
+            <p>Untuk semua produk oli mesin</p>
+            <a href="#produk" class="btn btn-sm">Lihat Promo</a>
+          </div>
+        </div>
+        <div class="promo-card promo-2">
+          <div class="promo-text">
+            <h3>Gratis Ongkir</h3>
+            <p>Pembelian di atas Rp 200.000</p>
+            <a href="#produk" class="btn btn-sm">Belanja Sekarang</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION FILTER & PRODUK -->
+    <section id="produk" class="section-produk">
+      <div class="container">
+        <h2 class="section-title">Daftar Produk</h2>
+
+        <!-- Filter & Pencarian -->
+        <div class="filter-bar" id="filterBar">
+          <input type="text" id="searchInput" placeholder="Cari sparepart..." class="search-input" />
+          <select id="filterMerk" class="filter-select">
+            <option value="">Semua Merk Motor</option>
+            <option value="honda">Honda</option>
+            <option value="yamaha">Yamaha</option>
+            <option value="suzuki">Suzuki</option>
+            <option value="kawasaki">Kawasaki</option>
+            <option value="universal">Universal</option>
+          </select>
+          <select id="filterJenis" class="filter-select">
+            <option value="">Semua Jenis</option>
+            <option value="mesin">Mesin</option>
+            <option value="rem">Rem & Kopling</option>
+            <option value="oli">Oli & Cairan</option>
+            <option value="kelistrikan">Kelistrikan</option>
+            <option value="ban">Ban & Velg</option>
+            <option value="body">Body & Aksesoris</option>
+          </select>
+          <select id="filterHarga" class="filter-select">
+            <option value="">Semua Harga</option>
+            <option value="0-50000">Di bawah Rp 50.000</option>
+            <option value="50000-200000">Rp 50.000 – 200.000</option>
+            <option value="200000-500000">Rp 200.000 – 500.000</option>
+            <option value="500000-99999999">Di atas Rp 500.000</option>
+          </select>
+          <button class="btn btn-outline" id="resetFilter">Reset</button>
+        </div>
+
+        <!-- Grid Produk -->
+        <div class="produk-grid" id="produkGrid">
+          <!-- Diisi oleh JS -->
+        </div>
+        <p class="no-result hidden" id="noResult">Produk tidak ditemukan.</p>
+      </div>
+    </section>
+
+    <!-- SECTION KERANJANG -->
+    <section id="keranjang" class="section-keranjang">
+      <div class="container">
+        <h2 class="section-title">Keranjang Belanja</h2>
+        <div class="keranjang-wrapper">
+          <div class="keranjang-items" id="keranjangItems">
+            <p class="empty-cart" id="emptyCart">Keranjang masih kosong.</p>
+          </div>
+          <aside class="keranjang-summary">
+            <h3>Ringkasan Pesanan</h3>
+            <div class="summary-row">
+              <span>Subtotal</span>
+              <span id="subtotal">Rp 0</span>
+            </div>
+            <div class="summary-row">
+              <span>Ongkir</span>
+              <span id="ongkir">Rp 15.000</span>
+            </div>
+            <div class="summary-row total">
+              <span>Total</span>
+              <span id="totalHarga">Rp 15.000</span>
+            </div>
+            <button class="btn btn-primary btn-block" id="checkoutBtn">Checkout (Simulasi)</button>
+            <button class="btn btn-outline btn-block" id="clearCartBtn">Kosongkan Keranjang</button>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION PROFIL / LOGIN-REGISTER -->
+    <section id="profil" class="section-profil">
+      <div class="container">
+        <h2 class="section-title">Akun Saya</h2>
+        <div class="auth-tabs">
+          <button class="tab-btn active" data-tab="login">Login</button>
+          <button class="tab-btn" data-tab="register">Daftar</button>
+        </div>
+
+        <!-- Form Login -->
+        <form class="auth-form" id="loginForm" novalidate>
+          <div class="form-group">
+            <label for="loginEmail">Email</label>
+            <input type="email" id="loginEmail" placeholder="email@contoh.com" required />
+          </div>
+          <div class="form-group">
+            <label for="loginPass">Password</label>
+            <input type="password" id="loginPass" placeholder="••••••••" required />
+          </div>
+          <button type="submit" class="btn btn-primary btn-block">Masuk</button>
+          <p class="form-note">* UI demo – tidak terhubung database</p>
+        </form>
+
+        <!-- Form Register -->
+        <form class="auth-form hidden" id="registerForm" novalidate>
+          <div class="form-group">
+            <label for="regNama">Nama Lengkap</label>
+            <input type="text" id="regNama" placeholder="Nama Anda" required />
+          </div>
+          <div class="form-group">
+            <label for="regEmail">Email</label>
+            <input type="email" id="regEmail" placeholder="email@contoh.com" required />
+          </div>
+          <div class="form-group">
+            <label for="regPhone">No. HP</label>
+            <input type="tel" id="regPhone" placeholder="08xxxxxxxxxx" />
+          </div>
+          <div class="form-group">
+            <label for="regPass">Password</label>
+            <input type="password" id="regPass" placeholder="Min. 8 karakter" required />
+          </div>
+          <button type="submit" class="btn btn-primary btn-block">Daftar Sekarang</button>
+          <p class="form-note">* UI demo – tidak terhubung database</p>
+        </form>
+      </div>
+    </section>
+
+    <!-- SECTION KONTAK -->
+    <section id="kontak" class="section-kontak">
+      <div class="container">
+        <h2 class="section-title">Hubungi Kami</h2>
+        <div class="kontak-grid">
+          <div class="kontak-info">
+            <p><i class="fa-solid fa-location-dot"></i> Jl. Raya Sparepart No. 88, Jakarta Timur</p>
+            <p><i class="fa-solid fa-phone"></i> +62 812-3456-7890</p>
+            <p><i class="fa-solid fa-envelope"></i> info@motorparts.id</p>
+            <p><i class="fa-solid fa-clock"></i> Senin – Sabtu, 08.00 – 17.00 WIB</p>
+          </div>
+          <form class="kontak-form" id="kontakForm" novalidate>
+            <div class="form-group">
+              <label for="kontakNama">Nama</label>
+              <input type="text" id="kontakNama" placeholder="Nama Anda" required />
+            </div>
+            <div class="form-group">
+              <label for="kontakEmail">Email</label>
+              <input type="email" id="kontakEmail" placeholder="email@contoh.com" required />
+            </div>
+            <div class="form-group">
+              <label for="kontakPesan">Pesan</label>
+              <textarea id="kontakPesan" rows="4" placeholder="Tulis pesan Anda..." required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Kirim Pesan</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===== ASIDE – Rekomendasi ===== -->
+  <aside class="aside-rekomendasi" id="asideRek">
+    <div class="container">
+      <h2 class="section-title">Produk Rekomendasi</h2>
+      <div class="rek-grid" id="rekGrid"></div>
+    </div>
+  </aside>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <a href="#beranda" class="logo">
+          <i class="fa-solid fa-gear"></i>
+          <span>MotorParts</span>
+        </a>
+        <p>Toko sparepart motor terpercaya sejak 2020. Kualitas OEM & aftermarket terbaik.</p>
+      </div>
+      <div class="footer-links">
+        <h4>Navigasi</h4>
+        <ul>
+          <li><a href="#beranda">Beranda</a></li>
+          <li><a href="#produk">Produk</a></li>
+          <li><a href="#keranjang">Keranjang</a></li>
+          <li><a href="#kontak">Kontak</a></li>
+        </ul>
+      </div>
+      <div class="footer-sosmed">
+        <h4>Ikuti Kami</h4>
+        <div class="sosmed-icons">
+          <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
+          <a href="#" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+          <a href="#" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 MotorParts. Hak cipta dilindungi.</p>
+    </div>
+  </footer>
+
+  <!-- Toast Notification -->
+  <div class="toast" id="toast"></div>
+
+  <!-- Modal Checkout -->
+  <div class="modal-overlay hidden" id="checkoutModal">
+    <div class="modal">
+      <h3><i class="fa-solid fa-circle-check"></i> Pesanan Berhasil!</h3>
+      <p>Terima kasih telah berbelanja di MotorParts.</p>
+      <p>Tim kami akan segera menghubungi Anda untuk konfirmasi pesanan.</p>
+      <button class="btn btn-primary" id="closeModal">Tutup</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
